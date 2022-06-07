@@ -60,7 +60,7 @@ local esp = {
     name = {enabled = false, color = rgb(255,255,255), outline = false},
     distance = {enabled = false, color = rgb(255,255,255), outline = false},
     health = {enabled = false, color = rgb(0,255,0), outline = false},
-    healthbar = {outline = false, enabled = true, higher = rgb(0,255,0), lower = rgb(255,0,0)},
+    healthbar = {outline = false, enabled = false, higher = rgb(0,255,0), lower = rgb(255,0,0)},
     tool = {enabled = false, color = rgb(255,255,255), outline = false},
     tracers = {enabled = false, color = rgb(255,255,255)},
     highlights = {fillcolor = rgb(255,255,255), chams = false, enabled = false, visible = rgb(0,255,0),non_visible = rgb(255,0,0), outline_color = rgb(0,0,0), fill_transparency = 0.5, outline_transparency = 0},
@@ -212,6 +212,8 @@ local utils = {}; do
                         --else 
                          --   array.Highlight.FillColor = esp.highlights.fillcolor
                     --end
+                    else 
+                        array.Highlight.Enabled = false
                 end
                 if esp.name.enabled then 
                     array.Name.Visible = true 
@@ -295,10 +297,12 @@ local utils = {}; do
                     array.Distance.Visible = false 
                     array.Box.Visible = false 
                     array.inner_box.Visible = false 
-                    array.Box_Outline.Visible = false 
+                    array.Box_Outline.Visible = false
+                    array.Highlight.Enabled = false
             end
             else 
                 array.inner_box.Visible = false
+                array.Highlight.Enabled = false 
                 array.Tool.Visible = false 
                 array.Healthbar.Visible = false 
                 array.Healthbar_Outline.Visible = false 
