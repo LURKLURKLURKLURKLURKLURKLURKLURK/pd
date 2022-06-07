@@ -314,8 +314,10 @@ local utils = {}; do
     end
 end
 
-for i,v in next, Players:GetChildren() do 
-    utils.add_esp_player(v)
+for i,v in next, Players:GetChildren() do
+    if v ~= LP then 
+        utils.add_esp_player(v)
+    end
 end
 
 Players.PlayerAdded:Connect(function(v)
