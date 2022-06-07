@@ -3,7 +3,7 @@
 ]]
 
 local utils = {}
-local InventoryViewerGUI = Instance.new("ScreenGui")
+utils.InventoryViewerGUI = Instance.new("ScreenGui")
 local backframe = Instance.new("Frame")
 local innerframe = Instance.new("Frame")
 local UIGradient = Instance.new("UIGradient")
