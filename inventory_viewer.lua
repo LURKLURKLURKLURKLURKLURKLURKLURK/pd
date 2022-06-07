@@ -42,7 +42,7 @@ function utils.AddInventoryItem(name,TYPE)
     Item.Position = UDim2.new(0, 0, 0, 0)
 end
 
-function utils. CheckPlayer(player)
+function utils.CheckPlayer(player)
     local Distance = math.floor((player.Character.Head.Position - game.Players.LocalPlayer.Character.Head.Position).magnitude)
     players_name_bold.Text = tostring(player)
     players_name.Text = tostring(player)
