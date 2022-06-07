@@ -87,7 +87,7 @@ function utils. CheckPlayer(player)
     end
 end
 
-local function ClearInventory()
+function utils.ClearInventory()
     inner_frame_offset = 38
     for i,v in next, Inventory:GetChildren() do 
         if v:IsA('TextLabel') then 
