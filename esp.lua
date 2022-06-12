@@ -282,6 +282,7 @@ local utils = {}; do
                     array.Tool.Visible = true 
                     array.Tool.Position = Vec2(bottom_offset.X,bottom_offset.Y + bottom_bounds)
                     array.Tool.Size = esp.fontsize 
+                    array.Tool.Color = esp.tool.color
                     array.Tool.Text = tostring(game.GetService(game,'ReplicatedStorage').Players[tostring(obj)].Status.GameplayVariables.EquippedTool.Value)
                     array.Tool.Font = esp.font
                     array.Tool.Outline = esp.tool.outline
