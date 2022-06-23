@@ -17,7 +17,7 @@
     Add Inner Box: 🟢
     
     
-    [Items]:
+    [Key]:
     🟢 Done
     🔴 Planned, havent gotten to
     🟠 WIP 
