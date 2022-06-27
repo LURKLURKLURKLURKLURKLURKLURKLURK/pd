@@ -263,7 +263,7 @@ do
                         array.Tool.Visible = false 
                 end
                 else 
-                    esp.Highlight.Enabled = false 
+                    array.Highlight.Enabled = false 
                     array.Tool.Visible = false 
                     array.Healthbar.Visible = false 
                     array.Healthbar_Outline.Visible = false 
@@ -274,7 +274,7 @@ do
                     array.Box_Outline.Visible = false 
             end
             else
-                esp.Highlight.Enabled = false 
+                array.Highlight.Enabled = false 
                 array.inner_box.Visible = false
                 array.Tool.Visible = false 
                 array.Healthbar.Visible = false 
