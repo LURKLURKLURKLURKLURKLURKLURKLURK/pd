@@ -50,12 +50,10 @@ local esp = {
     enabled = true,
     players = true, 
     max_distance_players = 10000, 
-    max_distance_objects = 5000,
     box = {enabled = true, color = rgb(255,255,255), outline = true},
     inner_box = {enabled = true, color = rgb(0,0,0),transparency = 0.3},
     name = {enabled = true, color = rgb(255,255,255), outline = true},
     distance = {enabled = true, color = rgb(255,255,255), outline = true},
-    health = {enabled = true, color = rgb(0,255,0), outline = true},
     healthbar = {outline = true, enabled = true, higher = rgb(0,255,0), lower = rgb(255,0,0)},
     tool = {enabled = true, color = rgb(255,255,255), outline = true},
     tracers = {enabled = false, color = rgb(255,255,255)},
@@ -64,7 +62,6 @@ local esp = {
     visible_check = false,
     font = 2,
     fontsize = 13,
-    measurement = 'meters',
 }
 
 do
@@ -148,14 +145,6 @@ do
             Visible = false, 
         });
         
-        drawn_objects.health_text = esp.draw('Text',{
-            Visible = false, 
-            Size = esp.fontsize,
-            Font = esp.font,
-            Outline = true,
-            Center = false, 
-            Color = esp.health.color,
-        })
         drawn_objects.Healthbar_Outline = esp.draw('Line',{
             Visible = false,
             Thickness = 3.5,
@@ -194,6 +183,8 @@ do
                     array.Highlight.FillTransparency = esp.highlights.fill_transparency
                     array.Highlight.OutlineColor = esp.highlights.outline_color
                     array.Highlight.FillColor = esp.highlights.fillcolor
+                else 
+                    array.Highlight.Enabled = false 
                 end
                 if esp.name.enabled then 
                     array.Name.Visible = true 
@@ -210,22 +201,11 @@ do
                         array.Name.Visible = false
                 end
                 
-                if esp.health.enabled then 
-                    array.health_text.Visible = true 
-                    array.health_text.Position = Vec2((Position.X-30), array.Healthbar.To.Y)
-                    array.health_text.Font = esp.font 
-                    array.health_text.Text = tostring(m_floor(character.Humanoid.Health))
-                    array.health_text.Color = esp.healthbar.lower:lerp(esp.healthbar.higher,character.Humanoid.Health / character.Humanoid.MaxHealth);
-                    array.health_text.Outline = esp.health.outline
-                    else 
-                        array.health_text.Visible = false
-                end
-                
                 if esp.distance.enabled then 
                     array.Distance.Visible = true 
                     array.Distance.Position = Vec2(bottom_offset.X, bottom_offset.Y + bottom_bounds)
                     array.Distance.Color = esp.distance.color 
-                    array.Distance.Text = tostring(m_floor(distance))..' '..esp.measurement
+                    array.Distance.Text = tostring(m_floor(distance))..'m'
                     array.Distance.Size = esp.fontsize
                     array.Distance.Font = esp.font
                     array.Distance.Outline = esp.distance.outline 
@@ -283,6 +263,7 @@ do
                         array.Tool.Visible = false 
                 end
                 else 
+                    esp.Highlight.Enabled = false 
                     array.Tool.Visible = false 
                     array.Healthbar.Visible = false 
                     array.Healthbar_Outline.Visible = false 
@@ -291,9 +272,9 @@ do
                     array.Box.Visible = false 
                     array.inner_box.Visible = false 
                     array.Box_Outline.Visible = false 
-                    array.health_text.Visible = false
             end
-            else 
+            else
+                esp.Highlight.Enabled = false 
                 array.inner_box.Visible = false
                 array.Tool.Visible = false 
                 array.Healthbar.Visible = false 
@@ -302,7 +283,6 @@ do
                 array.Distance.Visible = false 
                 array.Box.Visible = false 
                 array.Box_Outline.Visible = false
-                array.health_text.Visible = false
         end
     end
 end
