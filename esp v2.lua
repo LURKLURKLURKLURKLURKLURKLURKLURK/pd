@@ -409,7 +409,8 @@ function esp.update_esp(plr,array)
 		            end
 		            
 		            if esp.text_layout['health'].enabled then
-		                local HEALTH_FROM = v2((position.X - 5), position.Y + size.Y)
+		                local From = Vector2.new((position.X - 5), position.Y + size.Y)
+		                local To = Vector2.new(From.X, From.Y - 1 * size.Y)
 		                array.health.Transparency = 1 
 		                array.health_bold.Transparency = 1
 		                array.health.Visible = true 
@@ -419,7 +420,7 @@ function esp.update_esp(plr,array)
 		                array.health.Color = esp.misc_layout['health'].lower:lerp(esp.misc_layout['health'].higher,character.Humanoid.Health / character.Humanoid.MaxHealth);
 		                array.health.Outline = esp.outlines.enabled 
 		                array.health.OutlineColor = esp.outlines.color 
-		                array.health.Position = v2(position.X - 30, (bottom_offset.Y + top_offset.Y )/2) --v2(position.X - 30, (bottom_offset.Y + (top_offset.Y + 20))/2)
+		                array.health.Position = Vector2.new(position.X - 30, To.Y)
 		                if esp.boldtext then 
 		                    array.health_bold.Visible = true 
 		                    array.health_bold.Size = esp.fontsize 
