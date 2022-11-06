@@ -21,7 +21,7 @@ local esp = {
     misc_layout      = {
         ['arrows']    = {transparency = 1, enabled = false, size = 10, color = c3rgb(255,255,255),radius = 500},
         ['box']       = {inner = false, inner_trans = 0.5, inner_color = c3rgb(0,0,0), enabled = false, color = c3rgb(255,255,255)},
-        ['health']    = {enabled = false, lower = c3rgb(255,0,0),higher = c3rgb(255,255,255),position = 'left'},
+        ['health']    = {enabled = false, lower = c3rgb(255,0,0),higher = c3rgb(0,255,0),position = 'left'},
         ['highlight'] = {enabled = false, outline = c3rgb(255,255,255),fill = c3rgb(255,255,255),outlinetrans = 0,filltrans = 0},
     },
     text_layout      = {
@@ -236,10 +236,10 @@ function esp.update_esp(plr,array)
 		local height = (camera.CFrame - camera.CFrame.p) * v3(0, (mclamp(size.Y, 1, 10) + 0.5) / 2, 0)
 		height = mabs(wtsp(camera, pos.Position + height).Y - wtsp(camera, pos.Position - height).Y)
 		size = (v2(mfloor(height / 1.5), mfloor(height)))
-		
-		--[[ local Size = (Camera:WorldToViewportPoint(RootPart.Position - Vector3.new(0, 3, 0)).Y - Camera:WorldToViewportPoint(RootPart.Position + Vector3.new(0, 2.6, 0)).Y) / 2
-        local BoxSize = Vector2.new(math.floor(Size * 1.5), math.floor(Size* 2.2))
-        local BoxPos = Vector2.new(math.floor(Vector.X - Size * 1.5 / 2), math.floor(Vector.Y - Size * 2.14/ 2.2))]]
+		if size.X < 3 or size.Y < 6 then 
+		    size = v2(5,10) -- makes it look proper at distance 
+		end
+	
 		local screenpos, onscreen = wtvp(camera, pos.Position)
 		local position = (v2(mfloor(screenpos.X), mfloor(screenpos.Y)) - (size / 2))
 		position = v2(mfloor(position.X),mfloor(position.Y))
