@@ -231,11 +231,6 @@ function v1.CreateBullet(p3, p4, p5, p6, p7, p8, p9, p10, p11, Settings)
 				u23 = u23 + u22;
 				local v69 = u17 * u22;
 				local v70;
-				if not Settings.fastBullet then 
-				    v70 = workspace:Raycast(u24, u25 * v69, v60);
-				    else 
-				        v70 = workspace:Raycast(u24, u25 * 1000, v60);
-				end
 				local v71 = nil;
 				local v72 = nil;
 				local v73 = nil;
