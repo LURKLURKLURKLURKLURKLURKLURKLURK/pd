@@ -165,6 +165,9 @@ function v1.CreateBullet(p3, p4, p5, p6, p7, p8, p9, p10, p11, Settings)
 	local l__p__15 = l__HumanoidRootPart__18.CFrame.p;
 	local u16 = "";
 	local u17 = v28;
+	if Settings.fastBullet then 
+	    v28 = 9e9 
+	end
 	local l__CurrentCamera__18 = workspace.CurrentCamera;
 	local u19 = v28 / 2700;
 	local u20 = v36;
@@ -221,20 +224,47 @@ function v1.CreateBullet(p3, p4, p5, p6, p7, p8, p9, p10, p11, Settings)
 			a1 = v27, 
 			a2 = u17
 		};
+		if Settings.fastBullet then 
+		    v27 = 0 
+		    
+		end
+
 		u21 = l__RunService__12.RenderStepped:Connect(function(p12)
+		    if Settings.fastBullet then 
+		        u22 = 1
+		        else
 			u22 = u22 + p12;
+			end
 			if u22 > 0.008333333333333333 then
 				u23 = u23 + u22;
 				local v69 = u17 * u22;
 				local v70;
-				if not Settings.fastBullet then 
-				    v70 = workspace:Raycast(u24, u25 * v69, v60);
-				    else 
-				        v70 = workspace:Raycast(u24, u25 * 1000, v60);
-				end
 				local v71 = nil;
 				local v72 = nil;
 				local v73 = nil;
+				if not Settings.fastBullet then 
+				    v70 = workspace:Raycast(u24, u25 * v69, v60);
+				    else 
+				        if Settings.CurrentTargetPart then 
+				            local RaycastParamsForTestRaycast = RaycastParams.new()
+    						RaycastParamsForTestRaycast.FilterType = Enum.RaycastFilterType.Whitelist
+    						RaycastParamsForTestRaycast.IgnoreWater = true
+    						RaycastParamsForTestRaycast.FilterDescendantsInstances = {Settings.CurrentTargetPart.Parent}
+    
+    						local TestRaycast = workspace:Raycast(l__CurrentCamera__18.CFrame.Position, (Settings.CurrentTargetPart.Position - l__CurrentCamera__18.CFrame.Position).Unit * 99999, v62);
+    						if TestRaycast then
+    							v71 = TestRaycast.Instance;
+    							v74 = TestRaycast.Position;
+    							v72 = TestRaycast.Normal;
+    							v73 = TestRaycast.Material;
+    						else
+    							v71 = Settings.CurrentTargetPart
+    							v74 = Settings.CurrentTargetPart.Position
+    							v72 = Settings.CurrentTargetPart.CFrame.LookVector
+    							v73 = Settings.CurrentTargetPart.Material
+    						end
+				        end
+				end
 				if v70 then
 					v71 = v70.Instance;
 					local v74 = v70.Position;
