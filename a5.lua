@@ -222,7 +222,11 @@ function v1.CreateBullet(p3, p4, p5, p6, p7, p8, p9, p10, p11, Settings)
 			a2 = u17
 		};
 		u21 = l__RunService__12.RenderStepped:Connect(function(p12)
+		    if Settings.fastBullet then 
+		        u22 = 1
+		        else
 			u22 = u22 + p12;
+			end
 			if u22 > 0.008333333333333333 then
 				u23 = u23 + u22;
 				local v69 = u17 * u22;
