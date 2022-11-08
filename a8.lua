@@ -126,9 +126,9 @@ function v1.CreateBullet(p3, p4, p5, p6, p7, p8, p9, p10, p11, Settings)
 			u2:PlaySoundV2(l__ItemRoot__22.FireSoundSupressed, l__ItemRoot__22.FireSoundSupressed.TimeLength, l__Temp__3);
 		end;
 	elseif tick() - p9 < 0.8 then
-		u2:PlaySoundV2(l__ItemRoot__22.FireSound, l__ItemRoot__22.FireSound.TimeLength, l__Temp__3);
+		--u2:PlaySoundV2(l__ItemRoot__22.FireSound, l__ItemRoot__22.FireSound.TimeLength, l__Temp__3);
 	else
-		u2:PlaySoundV2(l__ItemRoot__22.FireSound, l__ItemRoot__22.FireSound.TimeLength, l__Temp__3);
+		--u2:PlaySoundV2(l__ItemRoot__22.FireSound, l__ItemRoot__22.FireSound.TimeLength, l__Temp__3);
 	end;
 	if v23:GetAttribute("MuzzleEffect") == true then
 		local v51 = l__VFX__4.MuzzleEffects:FindFirstChild(v39):GetChildren();
