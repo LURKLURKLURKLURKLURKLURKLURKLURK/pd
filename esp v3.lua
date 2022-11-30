@@ -375,7 +375,7 @@ function esp.update_esp(plr,array)
 		                array.distance.Transparency = 1 
 		                array.distance_bold.Transparency = 0.5
 		                array.distance.Visible = true 
-		                array.distance.Text = tostring(mfloor(distance / 3.571428)) .. 'm'
+		                array.distance.Text = tostring(mfloor(distance / 2.98)) .. 'm'
 		                array.distance.Size = esp.fontsize 
 		                array.distance.Font = esp.font 
 		                if esp.highlight_target.enabled and esp.highlight_target.target == tostring(character) then
